@@ -16,6 +16,7 @@ MySQL
 Maven
 📂 Project Structure
 
+<p>
 src/
 ├── controller/
 ├── service/
@@ -26,6 +27,7 @@ src/
 ├── enumm/
 ├── others/
 └── boot/
+</p>
 
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
