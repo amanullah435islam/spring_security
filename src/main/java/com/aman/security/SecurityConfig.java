@@ -21,18 +21,18 @@ import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class SecurityConfig {
 
 	private final UserService service;
 	private final JwtAuthenticationFilter authenticationFilter;
 	
-
-	public SecurityConfig(UserService service, JwtAuthenticationFilter authenticationFilter) {
-		super();
-		this.service = service;
-		this.authenticationFilter = authenticationFilter;
-	}
+//
+//	public SecurityConfig(UserService service, JwtAuthenticationFilter authenticationFilter) {
+//		super();
+//		this.service = service;
+//		this.authenticationFilter = authenticationFilter;
+//	}
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) {
@@ -40,12 +40,14 @@ public class SecurityConfig {
 		return http
 				.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(
-						req -> req
+						req -> req				
+						//.requestMatchers("/login/**", "/register/**", "/api/**")
 						.requestMatchers("/login/**", "/register/**")
 						.permitAll()
 						
 						.requestMatchers("/admin/**").hasAuthority("ADMIN")
 						.requestMatchers("/user/**").hasAnyAuthority("ADMIN","USER")
+						.requestMatchers("/api/patients/**").hasAnyAuthority("ADMIN","PATIENT","EMPLOYEE")
 						.requestMatchers("/employee/**").hasAnyAuthority("ADMIN", "EMPLOYEE")
 						.anyRequest()
 						.authenticated()

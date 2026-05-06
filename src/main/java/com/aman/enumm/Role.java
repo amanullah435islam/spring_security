@@ -6,5 +6,7 @@ public enum Role {
 	
 	USER,
 	
-	EMPLOYEE
+	EMPLOYEE,
+	
+	PATIENT
 }

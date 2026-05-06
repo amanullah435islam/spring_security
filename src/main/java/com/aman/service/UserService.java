@@ -10,14 +10,14 @@ import com.aman.repository.IUserRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class UserService implements UserDetailsService{
 
 	private final IUserRepository iUserRepository;
-	
-	public UserService(IUserRepository iUserRepository){
-	    this.iUserRepository = iUserRepository;
-	}
+
+//	public UserService(IUserRepository iUserRepository){
+//	    this.iUserRepository = iUserRepository;
+//	}
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

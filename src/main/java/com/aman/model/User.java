@@ -27,15 +27,15 @@ import lombok.ToString;
 @Entity
 @Table
 
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@ToString
-//@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Data
 public class User implements UserDetails{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Column(nullable = false)
 	private String name;
@@ -48,100 +48,15 @@ public class User implements UserDetails{
 
 	@Enumerated(value = EnumType.STRING)
 	private Role role;
-	
+
 	@OneToMany(mappedBy = "user")
 	private List<Token> tokens;
-	
-	
-	
 
-	public List<Token> getTokens() {
-		return tokens;
-	}
 
-	public void setTokens(List<Token> tokens) {
-		this.tokens = tokens;
-	}
 
-	public User(long id, String name, String email, String password, Role role, List<Token> tokens) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.role = role;
-		this.tokens = tokens;
-	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	public long getId() {
-		return id;
-	}
+//override to implements method of UserDetails class::::
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	public User() {
-		super();
-	}
-
-	public User(long id, String name, String email, String password, Role role) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.role = role;
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return List.of(new SimpleGrantedAuthority(role.name()));
@@ -149,11 +64,11 @@ public class User implements UserDetails{
 
 	@Override
 	public String getUsername() {
-		
+
 		return email;
 	}
-	
-	
+
+
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -173,6 +88,99 @@ public class User implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
+
+
+
+
+// without lombok @annotation alternative process:::::
+
+//	public List<Token> getTokens() {
+//		return tokens;
+//	}
+//
+//	public void setTokens(List<Token> tokens) {
+//		this.tokens = tokens;
+//	}
+//
+//	public User(long id, String name, String email, String password, Role role, List<Token> tokens) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.email = email;
+//		this.password = password;
+//		this.role = role;
+//		this.tokens = tokens;
+//	}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+//
+//	public String getPassword() {
+//		return password;
+//	}
+//
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
+//
+//	public Role getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(Role role) {
+//		this.role = role;
+//	}
+//
+//	public User() {
+//		super();
+//	}
+//
+//	public User(long id, String name, String email, String password, Role role) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.email = email;
+//		this.password = password;
+//		this.role = role;
+//	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 
 	
 	

@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@ToString
-//@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Data
 public class Token {
 
 	@Id
@@ -34,49 +34,68 @@ public class Token {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	public Token(Integer id, String token, Boolean loggedOut, User user) {
-		super();
-		this.id = id;
-		this.token = token;
-		this.loggedOut = loggedOut;
-		this.user = user;
-	}
+	
+	
+	
+	
+	
 
-	public Token() {
-		super();
-	}
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
-	public String getToken() {
-		return token;
-	}
 
-	public void setToken(String token) {
-		this.token = token;
-	}
 
-	public Boolean getLoggedOut() {
-		return loggedOut;
-	}
 
-	public void setLoggedOut(Boolean loggedOut) {
-		this.loggedOut = loggedOut;
-	}
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+
+
+
+
+
+//	public Token(Integer id, String token, Boolean loggedOut, User user) {
+//		super();
+//		this.id = id;
+//		this.token = token;
+//		this.loggedOut = loggedOut;
+//		this.user = user;
+//	}
+//
+//	public Token() {
+//		super();
+//	}
+//
+//	public Integer getId() {
+//		return id;
+//	}
+//
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
+//
+//	public String getToken() {
+//		return token;
+//	}
+//
+//	public void setToken(String token) {
+//		this.token = token;
+//	}
+//
+//	public Boolean getLoggedOut() {
+//		return loggedOut;
+//	}
+//
+//	public void setLoggedOut(Boolean loggedOut) {
+//		this.loggedOut = loggedOut;
+//	}
+//
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 
 }
