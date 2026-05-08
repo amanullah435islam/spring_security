@@ -51,5 +51,6 @@ public class Patient {
 	private Date lastVisit;
 
 	@Enumerated(value = EnumType.STRING)
+	@Column(name = "role", length = 30)
 	private Role role;
 }
